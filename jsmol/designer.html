@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<title>Medicine by Design</title>
+<head>
+<meta charset="utf-8">
+<!-- breaking out the library for debugging -->
+<script type="text/javascript" src="jquery/jquery.js"></script>
+<script type="text/javascript" src="js/JSmoljQueryExt.js"></script>
+<script type="text/javascript" src="js/JSmolCore.js"></script>
+<script type="text/javascript" src="js/JSmolApplet.js"></script>
+<script type="text/javascript" src="js/JSmolApi.js"></script>
+<script type="text/javascript" src="js/JSmolControls.js"></script>
+<script type="text/javascript" src="js/j2sjmol.js"></script>
+<script type="text/javascript" src="js/JSmol.js"></script>
+<script type="text/javascript" src="js/JSmolConsole.js"></script>
+<script type="text/javascript" src="js/JSmolMenu.js"></script>
+<!-- // following two only necessary for WebGL version: 
+-->
+<script type="text/javascript" src="js/JSmolThree.js"></script>
+<script type="text/javascript" src="js/JSmolGLmol.js"></script>
+
+<script type="text/javascript">
+
+Jmol.getProfile() // records repeat calls to overridden or overloaded Java methods
+
+var jmolApplet0; // set up in HTML table, below
+
+// use ?_USE=JAVA or _USE=SIGNED or _USE=HTML5
+
+jmol_isReady = function(applet) {
+	document.title = ("Ready to Design Medicine")
+	Jmol._getElement(applet, "appletdiv").style.border="1px solid blue"
+ 
+}		
+
+Info = {
+	width: 1050,
+	height: 650,
+	debug: false,
+	color: "#F0F0F0",
+	zIndexBase: 20000,
+	z:{monitorZIndex:300},
+	addSelectionOptions: false,
+	serverURL: "http://chemapps.stolaf.edu/jmol/jsmol/php/jsmol.php",
+	use: "HTML5",
+  //language: "fr", // NOTE: LOCALIZATION REQUIRES <meta charset="utf-8"> (see JSmolCore Jmol.featureDetection.supportsLocalization)
+	jarPath: "java",
+	j2sPath: "j2s",
+	jarFile: "JmolApplet.jar",
+	isSigned: false,
+	disableJ2SLoadMonitor: false,
+	disableInitialConsole: false,
+	readyFunction: jmol_isReady,
+  allowjavascript: true,
+	script: "reset;frank off; set antialiasDisplay;background skyblue;load data/TestTheozymeHexane.pdb;select protein; fix protein; spacefill off; wireframe off; ribbon 100; select backbone; wireframe off; color property atomno;select carbon and (connected(nitrogen) and connected(oxygen)) or nitrogen or oxygen; color cpk; "
+	//,defaultModel: ":dopamine"
+  //,noscript: true
+	//console: "none", // default will be jmolApplet0_infodiv
+	//script: "set antialiasDisplay;background white;load data/caffeine.mol;"
+  //delay 3;background yellow;delay 0.1;background white;for (var i = 0; i < 10; i+=1){rotate y 3;delay 0.01}"
+}
+
+
+
+
+</script>
+</head>
+<body>
+<table width="100%">
+
+<tr>
+
+<td width = "75%">
+
+
+
+<script>
+
+// note that the variable name MUST match the first parameter in quotes
+
+
+jmolApplet0 = Jmol.getApplet("jmolApplet0", Info)
+
+
+
+// note that now scripts can be sent immediately after the _Applet object is created
+
+//Jmol.script(jmolApplet0,"background gray;delay 0.5;background black")
+var lastPrompt=0;
+
+
+</script>
+
+</td>
+
+
+<td width="25%">
+
+
+
+<a href="http://www.wedesignmedicine.com" target="_blank"  style="text-decoration: none">
+<IMG  SRC="data/MedWorks-MedicineByDesign3.png" width="270" height="200" border="2"/>
+</a>
+<br>
+<a href="javascript:Jmol.script(jmolApplet0,'set modelkitmode; set picking assignatom_H')" style="text-decoration: none" title="Click this button and select an atom to change it to hydrogen">
+<IMG  SRC="MedWorksIcons/Hydrogen.PNG" width="40" height="40" border="0"/>
+</a>
+
+&#160;&#160;&#160&#160;<a href="javascript:Jmol.script(jmolApplet0,'set modelkitmode; set picking assignatom_C')" style="text-decoration: none" title="Click this button and select an atom to change it to carbon">
+<IMG  SRC="MedWorksIcons/Carbon.PNG" width="40" height="40" border="0"/>
+</a>
+&#160;&#160;&#160&#160;<a href="javascript:Jmol.script(jmolApplet0,'set modelkitmode; set picking assignatom_N')" style="text-decoration: none" title="Click this button and select an atom to change it to nitrogen">
+<IMG  SRC="MedWorksIcons/Nitrogen.PNG" width="40" height="40" border="0"/>
+</a>
+&#160;&#160;&#160&#160;<a href="javascript:Jmol.script(jmolApplet0,'set modelkitmode; set picking assignatom_O')" style="text-decoration: none" title="Click this button and select an atom to change it to oxygen">
+<IMG  SRC="MedWorksIcons/Oxygen.PNG" width="40" height="40" border="0"/>
+</a>
+&#160;&#160;&#160&#160;<a href="javascript:Jmol.script(jmolApplet0,'set modelkitmode; set picking assignatom_F')" style="text-decoration: none" title="Click this button and select an atom to change it to fluorine">
+<IMG  SRC="MedWorksIcons/Flourine.PNG" width="40" height="40" border="0"/>
+</a>
+<br>
+<a href="javascript:Jmol.script(jmolApplet0,'set modelkitmode; set picking assignatom_P')" style="text-decoration: none" title="Click this button and select an atom to change it to phosphorus">
+<IMG  SRC="MedWorksIcons/Phosphorous.PNG" width="40" height="40" border="0"/>
+</a>
+&#160;&#160;&#160&#160;<a href="javascript:Jmol.script(jmolApplet0,'set modelkitmode; set picking assignatom_S')" style="text-decoration: none" title="Click this button and select an atom to change it to sulfur">
+<IMG  SRC="MedWorksIcons/Sulfur.PNG" width="40" height="40" border="0"/>
+</a>
+&#160;&#160;&#160&#160;<a href="javascript:Jmol.script(jmolApplet0,'set modelkitmode; set picking assignatom_Cl')" style="text-decoration: none" title="Click this button and select an atom to change it to chlorine">
+<IMG  SRC="MedWorksIcons/Chlorine.PNG" width="40" height="40" border="0"/>
+</a>
+&#160;&#160;&#160&#160;<a href="javascript:Jmol.script(jmolApplet0,'set modelkitmode; set picking assignatom_Br')" style="text-decoration: none" title="Click this button and select an atom to change it to bromine">
+<IMG  SRC="MedWorksIcons/Bromine.PNG" width="40" height="40" border="0"/>
+</a>
+<br>
+
+<a href="javascript:Jmol.script(jmolApplet0,'set modelkitmode; set picking addhydrogens')" style="text-decoration: none" title="Click this button and select an atom to add hydrogen atoms">
+<IMG  SRC="MedWorksIcons/AddHydrogens.PNG" width="80" height="40" border="0"/>
+</a>
+
+
+<a href="javascript:Jmol.script(jmolApplet0,'set picking connect')" style="text-decoration: none" title="Click this button and select two atoms to add a covalent bond">
+<IMG  SRC="MedWorksIcons/AddBond.PNG" width="80" height="40" border="0"/>
+</a>
+
+<a href="javascript:Jmol.script(jmolApplet0,'set modelkitmode; set picking addhydrogens')" style="text-decoration: none" title="Click this button and select a bond to cycle through bond order">
+<IMG  SRC="MedWorksIcons/ChangeBondOrder.PNG" width="120" height="40" border="0"/>
+
+</a>
+<br>
+<a href="javascript:Jmol.script(jmolApplet0,'set modelkitmode; set picking deleteatom')" style="text-decoration: none" title="Click this button and select an atom to delete it">
+<IMG  SRC="MedWorksIcons/DeleteAtom.PNG" width="60" height="50" border="0"/>
+</a>
+
+<a href="javascript:Jmol.script(jmolApplet0,'set bondpicking true; set picking deletebond')" style="text-decoration: none" title="Click this button and select a bond to delete it">
+<IMG  SRC="MedWorksIcons/DeleteBond.PNG" width="80" height="40" border="0"/>
+</a>
+<br>
+<a href="javascript:Jmol.script(jmolApplet0,'set picking dragminimizemolecule')"    style="text-decoration: none" title="Click this button and select any atom of the ligand to drag and minimize/dock it">
+<IMG  SRC="MedWorksIcons/DragAndDock.PNG" width="60" height="60" border="0"/>
+</a> 
+<a href="javascript:Jmol.script(jmolApplet0,'set picking DRAGATOM')"  style="text-decoration: none" title="Click this button and select an atom to drag">
+<IMG  SRC="MedWorksIcons/AtomDrag.PNG" width="60" height="60" border="0"/>
+</a>
+<a href="javascript:Jmol.script(jmolApplet0,'set picking INVERTSTEREO')"  style="text-decoration: none" title="Click this button and select a chiral center to invert its stereochemistry">
+<IMG  SRC="MedWorksIcons/InvertStereochemistry.PNG" width="80" height="40" border="0"/>
+</a> 
+<br>
+<a href="javascript:Jmol.script(jmolApplet0,'set picking CENTER')" style="text-decoration: none" title="Click this button and select an atom to define it as the center of the model" >
+<IMG  SRC="MedWorksIcons/Center.PNG" width="60" height="60" border="0"/>
+</a>
+
+<a href="javascript:Jmol.script(jmolApplet0, 'spin on')"  style="text-decoration: none" title="Click this button to turn spinning of the model on">
+<IMG  SRC="MedWorksIcons/SpinOn.PNG" width="60" height="60" border="0"/>
+</a>
+<a href="javascript:Jmol.script(jmolApplet0, 'spin off')" style="text-decoration: none" title="Click this button to turn spinning of the model off">
+<IMG  SRC="MedWorksIcons/SpinOff.PNG" width="60" height="60" border="0"/>
+</a>
+<br>
+
+<a href="javascript:Jmol.script(jmolApplet0,'select not hydrogen; set hbondsRasmol TRUE; calculate HBONDS {LIG}{protein}; hbonds 50; color hbonds magenta')" style="text-decoration: none" title="Click this button to turn the calculation of hydrogen bonds on">
+<IMG  SRC="MedWorksIcons/CalculateHydrogenBondOn.PNG" width="60" height="60" border="0"/>
+</a>
+
+<a href="javascript:Jmol.script(jmolApplet0,'hbonds off')" style="text-decoration: none" title="Click this button to turn the calculation of hydrogen bonds off">
+<IMG  SRC="MedWorksIcons/CalculateHydrogenBondOff.PNG" width="60" height="60" border="0"/>
+</a>
+<br>
+<a href="javascript:Jmol.script(jmolApplet0,'select within(5.0,LIG) and protein and not {LIG} ; wireframe 50;  select protein and within(5.0,LIG)  and *.CA and  not {LIG}; label %n %[atomno]')" style="text-decoration: none" title="Click this button to view residues with at least one atom which is within 5.0 Angstroms of any atom of the ligand">
+<IMG  SRC="MedWorksIcons/ContactSideChainsOn.PNG" width="60" height="60" border="0"/>
+</a>
+<a href="javascript:Jmol.script(jmolApplet0,'select all and not {LIG}; wireframe off; labels off')" style="text-decoration: none" title="Click this button to hide residues with at least one atom which is within 5.0 Angstroms of any atom of the ligand">
+<IMG  SRC="MedWorksIcons/ContactSideChainsOff.PNG" width="60" height="60" border="0"/>
+</a>
+
+<a href="javascript:Jmol.script(jmolApplet0,'select {LIG}; show drawing ')" style="text-decoration: none" title="Click this button to export ligand structure as a SMILES string into the URL window along with an image">
+<IMG  SRC="MedWorksIcons/Submit.PNG" width="80" height="40" border="0"/>
+</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</td></tr></table>
+</td>
+</tr></table>
+</body>
+</html>
+
